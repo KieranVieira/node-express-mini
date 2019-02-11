@@ -32,3 +32,14 @@ export const addUser = userData => dispatch => {
         .then(res => dispatch({ type:ADD_USER_SUCCESS, payload:res.data }))
         .catch(err => dispatch({ type:ADD_USER_FAILURE, payload:err }))
 }
+
+export const UPDATE_USER_START = "UPDATE_USER_START";
+export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
+export const UPDATE_USER_FAILURE = "UPDATE_USER_FAILURE";
+
+export const updateUser = userData => dispatch => {
+    dispatch({ type:UPDATE_USER_START })
+    axios.put(`http://localhost:4000/api/users/${userData.id}`, userData)
+        .then(res => dispatch({ type:UPDATE_USER_SUCCESS, payload:res.data }))
+        .catch(err => dispatch({ type:UPDATE_USER_FAILURE, payload:err }))
+}

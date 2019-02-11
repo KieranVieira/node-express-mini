@@ -7,7 +7,10 @@ import {
     DELETE_USER_FAILURE,
     ADD_USER_START,
     ADD_USER_SUCCESS,
-    ADD_USER_FAILURE
+    ADD_USER_FAILURE,
+    UPDATE_USER_START,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -15,6 +18,7 @@ const initialState = {
     isFetchingUsers: false,
     isDeletingUser: false,
     isAddingUser: false,
+    isUpdatingUser: false,
     error: ''
 }
 
@@ -73,6 +77,24 @@ export const userReducer = (state = initialState, action) => {
             return{
                 ...state,
                 isAddingUser: false,
+                error: action.payload
+            }
+        case UPDATE_USER_START:
+            return{
+                ...state,
+                isUpdatingUser: true,
+                error: ''
+            }
+        case UPDATE_USER_SUCCESS:
+            return{
+                ...state,
+                isUpdatingUser: false,
+                error: ''
+            }
+        case UPDATE_USER_FAILURE: 
+            return{
+                ...state,
+                isUpdatingUser: false,
                 error: action.payload
             }
         default:

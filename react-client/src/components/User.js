@@ -8,7 +8,7 @@ const User = props => {
             <h1>{props.user.name}</h1>
             <h3>{props.user.bio}</h3>
             <button onClick={() => props.deleteUser(props.user.id)}>delete</button>
-            <button>update</button>
+            <button onClick={() => props.initiateUpdate(props.user)}>update</button>
         </Link>
     )
 }

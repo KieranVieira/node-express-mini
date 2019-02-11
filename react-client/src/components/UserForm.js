@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserForm = props => {
     return(
-        <form onSubmit={props.addUser}>
+        <form onSubmit={props.isUpdating ? props.updateUser : props.addUser}>
             <input 
                 type="text"
                 placeholder="name"
@@ -17,7 +17,7 @@ const UserForm = props => {
                 name='bio'
                 onChange={props.handleFormChange}
             />
-            <button type="submit">Add User</button>
+            <button type="submit">{props.isUpdating ? 'Update User' : 'Add User'}</button>
         </form>
     )
 }
