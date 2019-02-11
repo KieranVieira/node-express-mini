@@ -21,3 +21,14 @@ export const deleteUser = userId => dispatch => {
         .then(res => dispatch({ type:DELETE_USER_SUCCESS, payload:res.data }))
         .catch(err => dispatch({ type:DELETE_USER_FAILURE, payload:err }))
 }
+
+export const ADD_USER_START = "ADD_USER_START";
+export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
+export const ADD_USER_FAILURE = "ADD_USER_FAILURE";
+
+export const addUser = userData => dispatch => {
+    dispatch({ type:ADD_USER_START })
+    axios.post('http://localhost:4000/api/users', userData)
+        .then(res => dispatch({ type:ADD_USER_SUCCESS, payload:res.data }))
+        .catch(err => dispatch({ type:ADD_USER_FAILURE, payload:err }))
+}
